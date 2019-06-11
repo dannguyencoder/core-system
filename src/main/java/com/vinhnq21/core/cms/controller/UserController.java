@@ -1,8 +1,10 @@
 package com.vinhnq21.core.cms.controller;
 
 import com.vinhnq21.core.cms.entities.User;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vinhnq21.core.cms.entities.User;
+import com.vinhnq21.core.cms.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,46 +13,32 @@ import java.util.List;
 @RequestMapping("user")
 public class UserController {
 
-    @RequestMapping("/getAllUsers")
+    @Autowired
+    UserService userService;
+
+    @GetMapping("/users")
     public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        return users;
+        return userService.getAllUser();
     }
 
-    @RequestMapping("/getSingleUser/")
-    public User getSingleUser() {
-        User user = new User();
-        return user;
+    @GetMapping("/users/{userId}")
+    public User getSingleUser(@PathVariable int userId) {
+        return userService.getSingleUser(userId);
     }
 
 
-    @RequestMapping("/createUser")
-    public User createUser() {
-        User user = new User();
-        return user;
+    @PostMapping("/users")
+    public User createUser(@RequestBody User userData) {
+        return userService.insertUser(userData);
     }
 
-    @RequestMapping("/updateUser")
-    public User updateUser() {
-        User user = new User();
-        return user;
+    @PatchMapping("/users")
+    public User updateUser(@RequestBody User userData) {
+        return userService.updateUser(userData);
     }
 
-    @RequestMapping("/deleteUser")
-    public User deleteUser() {
-        User user = new User();
-        return user;
-    }
-
-    @RequestMapping("/login")
-    public User login() {
-        User user = new User();
-        return user;
-    }
-
-    @RequestMapping("/logout")
-    public User logout() {
-        User user = new User();
-        return user;
+    @DeleteMapping("/users/{userId}")
+    public User deleteUser(@PathVariable int userId) {
+        return userService.deleteUser(userId);
     }
 }

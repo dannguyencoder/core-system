@@ -1,6 +1,9 @@
 package com.vinhnq21.core.cms.controller;
 
 import com.vinhnq21.core.cms.entities.Category;
+import com.vinhnq21.core.cms.entities.Category;
+import com.vinhnq21.core.cms.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,35 +13,31 @@ import java.util.List;
 @RequestMapping("category")
 public class CategoryController {
 
-    @GetMapping("/getAllCategories")
+    @Autowired
+    CategoryService categoryService;
+
+    @GetMapping("/categorys")
     public List<Category> getAllCategorys() {
-        List<Category> categories = new ArrayList<>();
-
-        return categories;
+        return categoryService.getAllCategory();
     }
 
-    @GetMapping("/getSingleCategory/")
-    public Category getSingleCategory() {
-        Category category = new Category();
-        return category;
+    @GetMapping("/categorys/{categoryId}")
+    public Category getSingleCategory(@PathVariable int categoryId) {
+        return categoryService.getSingleCategory(categoryId);
     }
 
-
-    @PostMapping("/createCategory")
-    public Category createCategory() {
-        Category category = new Category();
-        return category;
+    @PostMapping("/categorys")
+    public Category createCategory(@RequestBody Category categoryData) {
+        return categoryService.insertCategory(categoryData);
     }
 
-    @PatchMapping("/updateCategory")
-    public Category updateCategory() {
-        Category category = new Category();
-        return category;
+    @PatchMapping("/categorys")
+    public Category updateCategory(@RequestBody Category categoryData) {
+        return categoryService.updateCategory(categoryData);
     }
 
-    @DeleteMapping("/deleteCategory")
-    public Category deleteCategory() {
-        Category category = new Category();
-        return category;
+    @DeleteMapping("/categorys/{categoryId}")
+    public Category deleteCategory(@PathVariable int categoryId) {
+        return categoryService.deleteCategory(categoryId);
     }
 }

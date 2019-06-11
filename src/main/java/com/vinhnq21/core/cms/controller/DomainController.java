@@ -1,6 +1,9 @@
 package com.vinhnq21.core.cms.controller;
 
 import com.vinhnq21.core.cms.entities.Domain;
+import com.vinhnq21.core.cms.entities.Domain;
+import com.vinhnq21.core.cms.service.DomainService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,34 +13,32 @@ import java.util.List;
 @RequestMapping("domain")
 public class DomainController {
 
-    @GetMapping("/getAllDomains")
+    @Autowired
+    DomainService domainService;
+
+    @GetMapping("/domains")
     public List<Domain> getAllDomains() {
-        List<Domain> domains = new ArrayList<>();
-        return domains;
+        return domainService.getAllDomain();
     }
 
-    @GetMapping("/getSingleDomain/")
-    public Domain getSingleDomain() {
-        Domain domain = new Domain();
-        return domain;
+    @GetMapping("/domains/{domainId}")
+    public Domain getSingleDomain(@PathVariable int domainId) {
+        return domainService.getSingleDomain(domainId);
     }
 
 
-    @PostMapping("/createDomain")
-    public Domain createDomain() {
-        Domain domain = new Domain();
-        return domain;
+    @PostMapping("/domains")
+    public Domain createDomain(@RequestBody Domain domainData) {
+        return domainService.insertDomain(domainData);
     }
 
-    @PatchMapping("/updateDomain")
-    public Domain updateDomain() {
-        Domain domain = new Domain();
-        return domain;
+    @PatchMapping("/domains")
+    public Domain updateDomain(@RequestBody Domain domainData) {
+        return domainService.updateDomain(domainData);
     }
 
-    @DeleteMapping("/deleteDomain")
-    public Domain deleteDomain() {
-        Domain domain = new Domain();
-        return domain;
+    @DeleteMapping("/domains/{domainId}")
+    public Domain deleteDomain(@PathVariable int domainId) {
+        return domainService.deleteDomain(domainId);
     }
 }

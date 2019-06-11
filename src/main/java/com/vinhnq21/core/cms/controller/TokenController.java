@@ -1,8 +1,10 @@
 package com.vinhnq21.core.cms.controller;
 
 import com.vinhnq21.core.cms.entities.Token;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vinhnq21.core.cms.entities.Token;
+import com.vinhnq21.core.cms.service.TokenService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,34 +13,32 @@ import java.util.List;
 @RequestMapping("token")
 public class TokenController {
 
-    @RequestMapping("/getAllTokens")
+    @Autowired
+    TokenService tokenService;
+
+    @GetMapping("/tokens")
     public List<Token> getAllTokens() {
-        List<Token> tokens = new ArrayList<>();
-        return tokens;
+        return tokenService.getAllToken();
     }
 
-    @RequestMapping("/getSingleToken/")
-    public Token getSingleToken() {
-        Token token = new Token();
-        return token;
+    @GetMapping("/tokens/{tokenId}")
+    public Token getSingleToken(@PathVariable int tokenId) {
+        return tokenService.getSingleToken(tokenId);
     }
 
 
-    @RequestMapping("/createToken")
-    public Token createToken() {
-        Token token = new Token();
-        return token;
+    @PostMapping("/tokens")
+    public Token createToken(@RequestBody Token tokenData) {
+        return tokenService.insertToken(tokenData);
     }
 
-    @RequestMapping("/updateToken")
-    public Token updateToken() {
-        Token token = new Token();
-        return token;
+    @PatchMapping("/tokens")
+    public Token updateToken(@RequestBody Token tokenData) {
+        return tokenService.updateToken(tokenData);
     }
 
-    @RequestMapping("/deleteToken")
-    public Token deleteToken() {
-        Token token = new Token();
-        return token;
+    @DeleteMapping("/tokens/{tokenId}")
+    public Token deleteToken(@PathVariable int tokenId) {
+        return tokenService.deleteToken(tokenId);
     }
 }

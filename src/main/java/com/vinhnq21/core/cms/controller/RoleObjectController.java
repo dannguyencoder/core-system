@@ -1,8 +1,10 @@
 package com.vinhnq21.core.cms.controller;
 
 import com.vinhnq21.core.cms.entities.RoleObject;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vinhnq21.core.cms.entities.RoleObject;
+import com.vinhnq21.core.cms.service.RoleObjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,34 +13,32 @@ import java.util.List;
 @RequestMapping("roleObject")
 public class RoleObjectController {
 
-    @RequestMapping("/getAllRoleObjects")
+    @Autowired
+    RoleObjectService roleObjectService;
+
+    @GetMapping("/roleObjects")
     public List<RoleObject> getAllRoleObjects() {
-        List<RoleObject> roleObjects = new ArrayList<>();
-        return roleObjects;
+        return roleObjectService.getAllRoleObject();
     }
 
-    @RequestMapping("/getSingleRoleObject/")
-    public RoleObject getSingleRoleObject() {
-        RoleObject roleObject = new RoleObject();
-        return roleObject;
+    @GetMapping("/roleObjects/{roleObjectId}")
+    public RoleObject getSingleRoleObject(@PathVariable int roleObjectId) {
+        return roleObjectService.getSingleRoleObject(roleObjectId);
     }
 
 
-    @RequestMapping("/createRoleObject")
-    public RoleObject createRoleObject() {
-        RoleObject roleObject = new RoleObject();
-        return roleObject;
+    @PostMapping("/roleObjects")
+    public RoleObject createRoleObject(@RequestBody RoleObject roleObjectData) {
+        return roleObjectService.insertRoleObject(roleObjectData);
     }
 
-    @RequestMapping("/updateRoleObject")
-    public RoleObject updateRoleObject() {
-        RoleObject roleObject = new RoleObject();
-        return roleObject;
+    @PatchMapping("/roleObjects")
+    public RoleObject updateRoleObject(@RequestBody RoleObject roleObjectData) {
+        return roleObjectService.updateRoleObject(roleObjectData);
     }
 
-    @RequestMapping("/deleteRoleObject")
-    public RoleObject deleteRoleObject() {
-        RoleObject roleObject = new RoleObject();
-        return roleObject;
+    @DeleteMapping("/roleObjects/{roleObjectId}")
+    public RoleObject deleteRoleObject(@PathVariable int roleObjectId) {
+        return roleObjectService.deleteRoleObject(roleObjectId);
     }
 }

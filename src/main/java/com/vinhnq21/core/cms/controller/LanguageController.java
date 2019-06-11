@@ -1,8 +1,10 @@
 package com.vinhnq21.core.cms.controller;
 
 import com.vinhnq21.core.cms.entities.Language;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vinhnq21.core.cms.entities.Language;
+import com.vinhnq21.core.cms.service.LanguageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,34 +13,32 @@ import java.util.List;
 @RequestMapping("language")
 public class LanguageController {
 
-    @RequestMapping("/getAllLanguages")
+    @Autowired
+    LanguageService languageService;
+
+    @GetMapping("/languages")
     public List<Language> getAllLanguages() {
-        List<Language> languages = new ArrayList<>();
-        return languages;
+        return languageService.getAllLanguage();
     }
 
-    @RequestMapping("/getSingleLanguage/")
-    public Language getSingleLanguage() {
-        Language language = new Language();
-        return language;
+    @GetMapping("/languages/{languageId}")
+    public Language getSingleLanguage(@PathVariable int languageId) {
+        return languageService.getSingleLanguage(languageId);
     }
 
 
-    @RequestMapping("/createLanguage")
-    public Language createLanguage() {
-        Language language = new Language();
-        return language;
+    @PostMapping("/languages")
+    public Language createLanguage(@RequestBody Language languageData) {
+        return languageService.insertLanguage(languageData);
     }
 
-    @RequestMapping("/updateLanguage")
-    public Language updateLanguage() {
-        Language language = new Language();
-        return language;
+    @PatchMapping("/languages")
+    public Language updateLanguage(@RequestBody Language languageData) {
+        return languageService.updateLanguage(languageData);
     }
 
-    @RequestMapping("/deleteLanguage")
-    public Language deleteLanguage() {
-        Language language = new Language();
-        return language;
+    @DeleteMapping("/languages/{languageId}")
+    public Language deleteLanguage(@PathVariable int languageId) {
+        return languageService.deleteLanguage(languageId);
     }
 }

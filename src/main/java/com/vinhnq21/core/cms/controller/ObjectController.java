@@ -1,8 +1,10 @@
 package com.vinhnq21.core.cms.controller;
 
 import com.vinhnq21.core.cms.entities.Object;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vinhnq21.core.cms.entities.Object;
+import com.vinhnq21.core.cms.service.ObjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,34 +13,32 @@ import java.util.List;
 @RequestMapping("object")
 public class ObjectController {
 
-    @RequestMapping("/getAllObjects")
+    @Autowired
+    ObjectService objectService;
+
+    @GetMapping("/objects")
     public List<Object> getAllObjects() {
-        List<Object> objects = new ArrayList<>();
-        return objects;
+        return objectService.getAllObject();
     }
 
-    @RequestMapping("/getSingleObject/")
-    public Object getSingleObject() {
-        Object object = new Object();
-        return object;
+    @GetMapping("/objects/{objectId}")
+    public Object getSingleObject(@PathVariable int objectId) {
+        return objectService.getSingleObject(objectId);
     }
 
 
-    @RequestMapping("/createObject")
-    public Object createObject() {
-        Object object = new Object();
-        return object;
+    @PostMapping("/objects")
+    public Object createObject(@RequestBody Object objectData) {
+        return objectService.insertObject(objectData);
     }
 
-    @RequestMapping("/updateObject")
-    public Object updateObject() {
-        Object object = new Object();
-        return object;
+    @PatchMapping("/objects")
+    public Object updateObject(@RequestBody Object objectData) {
+        return objectService.updateObject(objectData);
     }
 
-    @RequestMapping("/deleteObject")
-    public Object deleteObject() {
-        Object object = new Object();
-        return object;
+    @DeleteMapping("/objects/{objectId}")
+    public Object deleteObject(@PathVariable int objectId) {
+        return objectService.deleteObject(objectId);
     }
 }

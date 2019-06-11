@@ -6,6 +6,13 @@ import java.util.Date;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Table(name = "TBL_USER"
+//        , catalog = "cms",
+//        uniqueConstraints = {
+//        @UniqueConstraint(columnNames = ""),
+//        @UniqueConstraint(columnNames = "")
+//}
+)
 public class User {
 
     @Id

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface PostService {
 
     List<Post> getAllPost();
@@ -14,7 +14,7 @@ public interface PostService {
 
     Post insertPost(Post postData);
 
-    Post updatePost(int postId, Post newPostData);
+    Post updatePost(Post newPostDataWithId);
 
     Post deletePost(int postId);
 

@@ -1,8 +1,10 @@
 package com.vinhnq21.core.cms.controller;
 
 import com.vinhnq21.core.cms.entities.Role;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vinhnq21.core.cms.entities.Role;
+import com.vinhnq21.core.cms.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,34 +13,32 @@ import java.util.List;
 @RequestMapping("role")
 public class RoleController {
 
-    @RequestMapping("/getAllRoles")
+    @Autowired
+    RoleService roleService;
+
+    @GetMapping("/roles")
     public List<Role> getAllRoles() {
-        List<Role> roles = new ArrayList<>();
-        return roles;
+        return roleService.getAllRole();
     }
 
-    @RequestMapping("/getSingleRole/")
-    public Role getSingleRole() {
-        Role role = new Role();
-        return role;
+    @GetMapping("/roles/{roleId}")
+    public Role getSingleRole(@PathVariable int roleId) {
+        return roleService.getSingleRole(roleId);
     }
 
 
-    @RequestMapping("/createRole")
-    public Role createRole() {
-        Role role = new Role();
-        return role;
+    @PostMapping("/roles")
+    public Role createRole(@RequestBody Role roleData) {
+        return roleService.insertRole(roleData);
     }
 
-    @RequestMapping("/updateRole")
-    public Role updateRole() {
-        Role role = new Role();
-        return role;
+    @PatchMapping("/roles")
+    public Role updateRole(@RequestBody Role roleData) {
+        return roleService.updateRole(roleData);
     }
 
-    @RequestMapping("/deleteRole")
-    public Role deleteRole() {
-        Role role = new Role();
-        return role;
+    @DeleteMapping("/roles/{roleId}")
+    public Role deleteRole(@PathVariable int roleId) {
+        return roleService.deleteRole(roleId);
     }
 }

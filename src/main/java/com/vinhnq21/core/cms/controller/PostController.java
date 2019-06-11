@@ -15,33 +15,29 @@ public class PostController {
     @Autowired
     PostService postService;
 
-    @GetMapping("/getAllPosts")
+    @GetMapping("/posts")
     public List<Post> getAllPosts() {
         return postService.getAllPost();
     }
 
-    @GetMapping("/getSinglePost/")
-    public Post getSinglePost() {
-        Post post = new Post();
-        return post;
+    @GetMapping("/posts/{postId}")
+    public Post getSinglePost(@PathVariable int postId) {
+        return postService.getSinglePost(postId);
     }
 
 
-    @PostMapping("/createPost")
-    public Post createPost() {
-        Post post = new Post();
-        return post;
+    @PostMapping("/posts")
+    public Post createPost(@RequestBody Post postData) {
+        return postService.insertPost(postData);
     }
 
-    @PatchMapping("/updatePost")
-    public Post updatePost() {
-        Post post = new Post();
-        return post;
+    @PatchMapping("/posts")
+    public Post updatePost(@RequestBody Post postData) {
+        return postService.updatePost(postData);
     }
 
-    @DeleteMapping("/deletePost")
-    public Post deletePost() {
-        Post post = new Post();
-        return post;
+    @DeleteMapping("/posts/{postId}")
+    public Post deletePost(@PathVariable int postId) {
+        return postService.deletePost(postId);
     }
 }

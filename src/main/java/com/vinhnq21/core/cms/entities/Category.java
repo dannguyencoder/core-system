@@ -6,9 +6,13 @@ import java.util.Date;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "stock", catalog = "mkyong", uniqueConstraints = {
-        @UniqueConstraint(columnNames = ""),
-        @UniqueConstraint(columnNames = "") })
+@Table(name = "TBL_CATEGORY"
+//        , catalog = "cms",
+//        uniqueConstraints = {
+//        @UniqueConstraint(columnNames = ""),
+//        @UniqueConstraint(columnNames = "")
+//}
+)
 public class Category {
 
 

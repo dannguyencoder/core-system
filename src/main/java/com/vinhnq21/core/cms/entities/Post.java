@@ -5,6 +5,13 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Table(name = "TBL_POST"
+//        , catalog = "cms",
+//        uniqueConstraints = {
+//        @UniqueConstraint(columnNames = ""),
+//        @UniqueConstraint(columnNames = "")
+//}
+)
 public class Post {
 
     @Id
