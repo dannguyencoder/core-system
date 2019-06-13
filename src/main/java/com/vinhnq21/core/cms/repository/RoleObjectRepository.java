@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleObjectRepository extends JpaRepository<RoleObject, Integer> {
+public interface RoleObjectRepository extends JpaRepository<RoleObject, RoleObject.RoleObjectPk> {
 
 }

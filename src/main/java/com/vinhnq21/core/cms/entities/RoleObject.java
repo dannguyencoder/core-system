@@ -36,7 +36,21 @@ public class RoleObject {
 
     }
 
+    public RoleObject(RoleObjectPk idClass, byte isActive, byte isVisible, Timestamp createdAt, Timestamp updatedAt) {
+        this.idClass = idClass;
+        this.isActive = isActive;
+        this.isVisible = isVisible;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
+    public RoleObjectPk getIdClass() {
+        return idClass;
+    }
+
+    public void setIdClass(RoleObjectPk idClass) {
+        this.idClass = idClass;
+    }
 
     public byte getIsActive() {
         return isActive;
@@ -90,6 +104,12 @@ public class RoleObject {
             this.roleId = roleId;
             this.objectId = objectId;
         }
+
+        public RoleObjectPk(int roleId) {
+            this.roleId = roleId;
+        }
+
+
 
         public int getRoleId() {
             return roleId;

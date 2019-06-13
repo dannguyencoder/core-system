@@ -22,7 +22,7 @@ public class RoleObjectServiceImpl implements RoleObjectService {
 
     @Override
     public RoleObject getSingleRoleObject(int roleObjectId) {
-        Optional<RoleObject> optionalRoleObject = roleObjectRepository.findById(roleObjectId);
+        Optional<RoleObject> optionalRoleObject = roleObjectRepository.findById(new RoleObject.RoleObjectPk(roleObjectId));
         if (!optionalRoleObject.isPresent()) {
             throw new RuntimeException("RoleObject not found");
         } else {
@@ -33,7 +33,7 @@ public class RoleObjectServiceImpl implements RoleObjectService {
     @Override
     public RoleObject insertRoleObject(RoleObject roleObjectData) {
 
-//        roleObjectData.setRoleId(0);
+        roleObjectData.setIdClass(new RoleObject.RoleObjectPk(3, 3));
 
         roleObjectRepository.save(roleObjectData);
 
@@ -57,12 +57,12 @@ public class RoleObjectServiceImpl implements RoleObjectService {
     @Override
     public RoleObject deleteRoleObject(int roleObjectId) {
 
-        Optional<RoleObject> optionalRoleObject = roleObjectRepository.findById(roleObjectId);
+        Optional<RoleObject> optionalRoleObject = roleObjectRepository.findById(new RoleObject.RoleObjectPk(roleObjectId));
 
         if (!optionalRoleObject.isPresent()) {
             throw new RuntimeException("RoleObject not found");
         } else {
-            roleObjectRepository.deleteById(roleObjectId);
+            roleObjectRepository.deleteById(new RoleObject.RoleObjectPk(roleObjectId));
         }
 
         return optionalRoleObject.get();
