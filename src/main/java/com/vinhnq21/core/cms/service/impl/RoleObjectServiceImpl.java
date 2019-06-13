@@ -33,7 +33,7 @@ public class RoleObjectServiceImpl implements RoleObjectService {
     @Override
     public RoleObject insertRoleObject(RoleObject roleObjectData) {
 
-        roleObjectData.setRoleId(0);
+//        roleObjectData.setRoleId(0);
 
         roleObjectRepository.save(roleObjectData);
 
@@ -43,7 +43,7 @@ public class RoleObjectServiceImpl implements RoleObjectService {
     @Override
     public RoleObject updateRoleObject(RoleObject newRoleObjectDataWithId) {
 
-        Optional<RoleObject> optionalRoleObject = roleObjectRepository.findById(newRoleObjectDataWithId.getRoleId());
+        Optional<RoleObject> optionalRoleObject = null;
 
         if (!optionalRoleObject.isPresent()) {
             throw new RuntimeException("RoleObject not found");

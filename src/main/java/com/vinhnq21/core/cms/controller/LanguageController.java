@@ -10,34 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("language")
+@RequestMapping("languages")
 public class LanguageController {
 
     @Autowired
     LanguageService languageService;
 
-    @GetMapping("/languages")
+    @GetMapping
     public List<Language> getAllLanguages() {
         return languageService.getAllLanguage();
     }
 
-    @GetMapping("/languages/{languageId}")
+    @GetMapping("/{languageId}")
     public Language getSingleLanguage(@PathVariable int languageId) {
         return languageService.getSingleLanguage(languageId);
     }
 
 
-    @PostMapping("/languages")
+    @PostMapping
     public Language createLanguage(@RequestBody Language languageData) {
         return languageService.insertLanguage(languageData);
     }
 
-    @PatchMapping("/languages")
+    @PatchMapping
     public Language updateLanguage(@RequestBody Language languageData) {
         return languageService.updateLanguage(languageData);
     }
 
-    @DeleteMapping("/languages/{languageId}")
+    @DeleteMapping("/{languageId}")
     public Language deleteLanguage(@PathVariable int languageId) {
         return languageService.deleteLanguage(languageId);
     }

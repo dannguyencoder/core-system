@@ -1,6 +1,7 @@
 package com.vinhnq21.core.cms.entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -58,12 +59,12 @@ public class Category {
     private int domainId;
 
     @Column(name = "CREATED_AT", unique = true, nullable = false, length = 10)
-    private Date createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "UPDATED_AT", unique = true, nullable = false, length = 10)
-    private Date updatedAt;
+    private Timestamp updatedAt;
 
-    public Category(int id, int parentId, String name, String friendlyUrl, byte order, byte isVisible, byte isActive, String metaKeywords, String metaDescription, String template, int userId, int languageId, int domainId, Date createdAt, Date updatedAt) {
+    public Category(int id, int parentId, String name, String friendlyUrl, byte order, byte isVisible, byte isActive, String metaKeywords, String metaDescription, String template, int userId, int languageId, int domainId, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.parentId = parentId;
         this.name = name;
@@ -189,19 +190,19 @@ public class Category {
         this.domainId = domainId;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -220,8 +221,8 @@ public class Category {
         private int userId;
         private int languageId;
         private int domainId;
-        private Date createdAt;
-        private Date updatedAt;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
 
         public Builder setId(int id) {
             this.id = id;
@@ -288,12 +289,12 @@ public class Category {
             return this;
         }
 
-        public Builder setCreatedAt(Date createdAt) {
+        public Builder setCreatedAt(Timestamp createdAt) {
             this.createdAt = createdAt;
             return this;
         }
 
-        public Builder setUpdatedAt(Date updatedAt) {
+        public Builder setUpdatedAt(Timestamp updatedAt) {
             this.updatedAt = updatedAt;
             return this;
         }

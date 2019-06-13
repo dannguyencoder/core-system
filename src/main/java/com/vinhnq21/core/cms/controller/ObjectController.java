@@ -10,34 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("object")
+@RequestMapping("objects")
 public class ObjectController {
 
     @Autowired
     ObjectService objectService;
 
-    @GetMapping("/objects")
+    @GetMapping
     public List<Object> getAllObjects() {
         return objectService.getAllObject();
     }
 
-    @GetMapping("/objects/{objectId}")
+    @GetMapping("/{objectId}")
     public Object getSingleObject(@PathVariable int objectId) {
         return objectService.getSingleObject(objectId);
     }
 
 
-    @PostMapping("/objects")
+    @PostMapping
     public Object createObject(@RequestBody Object objectData) {
         return objectService.insertObject(objectData);
     }
 
-    @PatchMapping("/objects")
+    @PatchMapping
     public Object updateObject(@RequestBody Object objectData) {
         return objectService.updateObject(objectData);
     }
 
-    @DeleteMapping("/objects/{objectId}")
+    @DeleteMapping("/{objectId}")
     public Object deleteObject(@PathVariable int objectId) {
         return objectService.deleteObject(objectId);
     }

@@ -10,34 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("token")
+@RequestMapping("tokens")
 public class TokenController {
 
     @Autowired
     TokenService tokenService;
 
-    @GetMapping("/tokens")
+    @GetMapping
     public List<Token> getAllTokens() {
         return tokenService.getAllToken();
     }
 
-    @GetMapping("/tokens/{tokenId}")
+    @GetMapping("/{tokenId}")
     public Token getSingleToken(@PathVariable int tokenId) {
         return tokenService.getSingleToken(tokenId);
     }
 
 
-    @PostMapping("/tokens")
+    @PostMapping
     public Token createToken(@RequestBody Token tokenData) {
         return tokenService.insertToken(tokenData);
     }
 
-    @PatchMapping("/tokens")
+    @PatchMapping
     public Token updateToken(@RequestBody Token tokenData) {
         return tokenService.updateToken(tokenData);
     }
 
-    @DeleteMapping("/tokens/{tokenId}")
+    @DeleteMapping("/{tokenId}")
     public Token deleteToken(@PathVariable int tokenId) {
         return tokenService.deleteToken(tokenId);
     }

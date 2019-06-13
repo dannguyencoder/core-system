@@ -1,6 +1,7 @@
 package com.vinhnq21.core.cms.entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -26,13 +27,19 @@ public class Token {
     @Column(name = "EXPIRE_DATE", unique = true, nullable = false)
     private Date expireDate;
 
+    @Column(name = "IS_ACTIVE", unique = true, nullable = false)
+    private byte isActive;
+
+    @Column(name = "IS_VISIBLE", unique = true, nullable = false)
+    private byte isVisible;
+
     @Column(name = "CREATED_AT", unique = true, nullable = false)
-    private Date createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "UPDATED_AT", unique = true, nullable = false)
-    private Date updatedAt;
+    private Timestamp updatedAt;
 
-    public Token(int id, String token, Date expireDate, Date createdAt, Date updatedAt) {
+    public Token(int id, String token, Date expireDate, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.token = token;
         this.expireDate = expireDate;
@@ -68,19 +75,19 @@ public class Token {
         this.expireDate = expireDate;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -89,8 +96,8 @@ public class Token {
         private int id;
         private String token;
         private Date expireDate;
-        private Date createdAt;
-        private Date updatedAt;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
 
         public Builder setId(int id) {
             this.id = id;
@@ -107,12 +114,12 @@ public class Token {
             return this;
         }
 
-        public Builder setCreatedAt(Date createdAt) {
+        public Builder setCreatedAt(Timestamp createdAt) {
             this.createdAt = createdAt;
             return this;
         }
 
-        public Builder setUpdatedAt(Date updatedAt) {
+        public Builder setUpdatedAt(Timestamp updatedAt) {
             this.updatedAt = updatedAt;
             return this;
         }

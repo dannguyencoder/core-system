@@ -2,6 +2,8 @@ package com.vinhnq21.core.cms.entities;
 
 import javax.persistence.*;
 
+import java.sql.Timestamp;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -19,8 +21,8 @@ public class Object {
     @Column(name = "ID", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "NAME", unique = true, nullable = false)
-    private String name;
+    @Column(name = "OBJECT_NAME", unique = true, nullable = false)
+    private String objectName;
 
     @Column(name = "URL", unique = true, nullable = false)
     private String url;
@@ -28,8 +30,8 @@ public class Object {
     @Column(name = "PARENT_ID", unique = true, nullable = false)
     private int parentId;
 
-    @Column(name = "ORDER", unique = true, nullable = false)
-    private byte order;
+    @Column(name = "OBJECT_ORDER", unique = true, nullable = false)
+    private byte objectOrder;
 
     @Column(name = "IS_ACTIVE", unique = true, nullable = false)
     private byte isActive;
@@ -40,19 +42,25 @@ public class Object {
     @Column(name = "DOMAIN_ID", unique = true, nullable = false)
     private int domainId;
 
-    public Object(int id, String name, String url, int parentId, byte order, byte isActive, byte isVisible, int domainId) {
-        this.id = id;
-        this.name = name;
+    @Column(name = "CREATED_AT", unique = true, nullable = false)
+    private Timestamp createdAt;
+
+    @Column(name = "UPDATED_AT", unique = true, nullable = false)
+    private Timestamp updatedAt;
+
+    public Object() {
+    }
+
+    public Object(String objectName, String url, int parentId, byte objectOrder, byte isActive, byte isVisible, int domainId, Timestamp createdAt, Timestamp updatedAt) {
+        this.objectName = objectName;
         this.url = url;
         this.parentId = parentId;
-        this.order = order;
+        this.objectOrder = objectOrder;
         this.isActive = isActive;
         this.isVisible = isVisible;
         this.domainId = domainId;
-    }
-
-    public Object() {
-
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public int getId() {
@@ -61,14 +69,6 @@ public class Object {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUrl() {
@@ -87,12 +87,20 @@ public class Object {
         this.parentId = parentId;
     }
 
-    public byte getOrder() {
-        return order;
+    public String getObjectName() {
+        return objectName;
     }
 
-    public void setOrder(byte order) {
-        this.order = order;
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
+    }
+
+    public byte getObjectOrder() {
+        return objectOrder;
+    }
+
+    public void setObjectOrder(byte objectOrder) {
+        this.objectOrder = objectOrder;
     }
 
     public byte getIsActive() {
@@ -119,59 +127,24 @@ public class Object {
         this.domainId = domainId;
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public static class Builder {
 
-        private int id;
-        private String name;
-        private String url;
-        private int parentId;
-        private byte order;
-        private byte isActive;
-        private byte isVisible;
-        private int domainId;
 
-        public Builder setId(int id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder setName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder setUrl(String url) {
-            this.url = url;
-            return this;
-        }
-
-        public Builder setParentId(int parentId) {
-            this.parentId = parentId;
-            return this;
-        }
-
-        public Builder setOrder(byte order) {
-            this.order = order;
-            return this;
-        }
-
-        public Builder setIsActive(byte isActive) {
-            this.isActive = isActive;
-            return this;
-        }
-
-        public Builder setIsVisible(byte isVisible) {
-            this.isVisible = isVisible;
-            return this;
-        }
-
-        public Builder setDomainId(int domainId) {
-            this.domainId = domainId;
-            return this;
-        }
-
-        public Object createObject() {
-            return new Object(id, name, url, parentId, order, isActive, isVisible, domainId);
-        }
     }
 }

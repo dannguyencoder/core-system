@@ -10,34 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("domain")
+@RequestMapping("domains")
 public class DomainController {
 
     @Autowired
     DomainService domainService;
 
-    @GetMapping("/domains")
+    @GetMapping
     public List<Domain> getAllDomains() {
         return domainService.getAllDomain();
     }
 
-    @GetMapping("/domains/{domainId}")
+    @GetMapping("/{domainId}")
     public Domain getSingleDomain(@PathVariable int domainId) {
         return domainService.getSingleDomain(domainId);
     }
 
 
-    @PostMapping("/domains")
+    @PostMapping
     public Domain createDomain(@RequestBody Domain domainData) {
         return domainService.insertDomain(domainData);
     }
 
-    @PatchMapping("/domains")
+    @PatchMapping
     public Domain updateDomain(@RequestBody Domain domainData) {
         return domainService.updateDomain(domainData);
     }
 
-    @DeleteMapping("/domains/{domainId}")
+    @DeleteMapping("/{domainId}")
     public Domain deleteDomain(@PathVariable int domainId) {
         return domainService.deleteDomain(domainId);
     }

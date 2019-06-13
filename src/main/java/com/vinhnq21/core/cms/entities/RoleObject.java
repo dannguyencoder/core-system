@@ -2,64 +2,114 @@ package com.vinhnq21.core.cms.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
+import java.util.Objects;
 
-import static javax.persistence.GenerationType.IDENTITY;
+@Entity
+@Table(name = "TBL_ROLE_OBJECT"
+//        , catalog = "cms",
+//        uniqueConstraints = {
+//        @UniqueConstraint(columnNames = ""),
+//        @UniqueConstraint(columnNames = "")
+//}
+)
+public class RoleObject {
 
-@Embeddable
-public class RoleObject implements Serializable {
+    @EmbeddedId
+    private RoleObjectPk idClass;
 
-    @Column(name = "ROLE_ID", unique = true, nullable = false)
-    @Id
-    private int roleId;
+    @Column(name = "IS_ACTIVE", unique = true, nullable = false)
+    private byte isActive;
 
-    @Column(name = "OBJECT_ID", unique = true, nullable = false)
-    @Id
-    private int objectId;
+    @Column(name = "IS_VISIBLE", unique = true, nullable = false)
+    private byte isVisible;
 
-    public RoleObject(int roleId, int objectId) {
+    @Column(name = "CREATED_AT", unique = true, nullable = false)
+    private Timestamp createdAt;
 
-        this.roleId = roleId;
-        this.objectId = objectId;
-    }
+    @Column(name = "UPDATED_AT", unique = true, nullable = false)
+    private Timestamp updatedAt;
+
+
 
     public RoleObject() {
 
     }
 
-    public int getRoleId() {
-        return roleId;
+
+
+    public byte getIsActive() {
+        return isActive;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setIsActive(byte isActive) {
+        this.isActive = isActive;
     }
 
-    public int getObjectId() {
-        return objectId;
+    public byte getIsVisible() {
+        return isVisible;
     }
 
-    public void setObjectId(int objectId) {
-        this.objectId = objectId;
+    public void setIsVisible(byte isVisible) {
+        this.isVisible = isVisible;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public static class Builder {
 
+
+    }
+
+    @Embeddable
+    public static class RoleObjectPk implements Serializable {
+
+        @Column(name = "ROLE_ID", unique = true, nullable = false)
         private int roleId;
+
+        @Column(name = "OBJECT_ID", unique = true, nullable = false)
         private int objectId;
 
-        public Builder setRoleId(int roleId) {
+        public RoleObjectPk() {}
+
+        public RoleObjectPk(int roleId, int objectId) {
             this.roleId = roleId;
-            return this;
-        }
-
-        public Builder setObjectId(int objectId) {
             this.objectId = objectId;
-            return this;
         }
 
-        public RoleObject createRoleObject() {
-            return new RoleObject(roleId, objectId);
+        public int getRoleId() {
+            return roleId;
+        }
+
+        public void setRoleId(int roleId) {
+            this.roleId = roleId;
+        }
+
+        public int getObjectId() {
+            return objectId;
+        }
+
+        public void setObjectId(int objectId) {
+            this.objectId = objectId;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(roleId, objectId);
         }
     }
 }

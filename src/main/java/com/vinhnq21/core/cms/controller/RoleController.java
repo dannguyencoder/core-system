@@ -10,34 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("role")
+@RequestMapping("roles")
 public class RoleController {
 
     @Autowired
     RoleService roleService;
 
-    @GetMapping("/roles")
+    @GetMapping
     public List<Role> getAllRoles() {
         return roleService.getAllRole();
     }
 
-    @GetMapping("/roles/{roleId}")
+    @GetMapping("/{roleId}")
     public Role getSingleRole(@PathVariable int roleId) {
         return roleService.getSingleRole(roleId);
     }
 
 
-    @PostMapping("/roles")
+    @PostMapping
     public Role createRole(@RequestBody Role roleData) {
         return roleService.insertRole(roleData);
     }
 
-    @PatchMapping("/roles")
+    @PatchMapping
     public Role updateRole(@RequestBody Role roleData) {
         return roleService.updateRole(roleData);
     }
 
-    @DeleteMapping("/roles/{roleId}")
+    @DeleteMapping("/{roleId}")
     public Role deleteRole(@PathVariable int roleId) {
         return roleService.deleteRole(roleId);
     }

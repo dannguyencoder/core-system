@@ -2,6 +2,8 @@ package com.vinhnq21.core.cms.entities;
 
 import javax.persistence.*;
 
+import java.sql.Timestamp;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -51,6 +53,12 @@ public class Post {
 
     @Column(name = "CONTENT_ID", unique = true, nullable = false)
     private int contentId;
+
+    @Column(name = "CREATED_AT", unique = true, nullable = false)
+    private Timestamp createdAt;
+
+    @Column(name = "UPDATED_AT", unique = true, nullable = false)
+    private Timestamp updatedAt;
 
     public Post(int id, String title, int categoryId, String avatar, int languageId, String postContent, byte isActive, byte isVisible, String metaKeywords, String metaDescription, int domainId, int contentId) {
         this.id = id;

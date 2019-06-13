@@ -10,34 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("users")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @GetMapping("/users")
+    @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUser();
     }
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("/{userId}")
     public User getSingleUser(@PathVariable int userId) {
         return userService.getSingleUser(userId);
     }
 
 
-    @PostMapping("/users")
+    @PostMapping
     public User createUser(@RequestBody User userData) {
         return userService.insertUser(userData);
     }
 
-    @PatchMapping("/users")
+    @PatchMapping
     public User updateUser(@RequestBody User userData) {
         return userService.updateUser(userData);
     }
 
-    @DeleteMapping("/users/{userId}")
+    @DeleteMapping("/{userId}")
     public User deleteUser(@PathVariable int userId) {
         return userService.deleteUser(userId);
     }

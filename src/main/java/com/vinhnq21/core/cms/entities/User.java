@@ -1,6 +1,7 @@
 package com.vinhnq21.core.cms.entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -36,10 +37,13 @@ public class User {
     private String email;
 
     @Column(name = "CREATED_AT", unique = true, nullable = false)
-    private Date createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "UPDATED_AT", unique = true, nullable = false)
-    private Date updatedAt;
+    private Timestamp updatedAt;
+
+    @Column(name = "IS_VISIBLE", unique = true, nullable = false)
+    private byte isVisible;
 
     @Column(name = "IS_ACTIVE", unique = true, nullable = false)
     private byte isActive;
@@ -50,7 +54,7 @@ public class User {
     @Column(name = "TOKEN", unique = true, nullable = false)
     private String token;
 
-    public User(int id, String username, String password, int roleId, int domainId, String email, Date createdAt, Date updatedAt, byte isActive, byte isAdmin, String token) {
+    public User(int id, String username, String password, int roleId, int domainId, String email, Timestamp createdAt, Timestamp updatedAt, byte isActive, byte isAdmin, String token) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -116,19 +120,19 @@ public class User {
         this.email = email;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -164,8 +168,8 @@ public class User {
         private int roleId;
         private int domainId;
         private String email;
-        private Date createdAt;
-        private Date updatedAt;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
         private byte isActive;
         private byte isAdmin;
         private String token;
@@ -200,12 +204,12 @@ public class User {
             return this;
         }
 
-        public Builder setCreatedAt(Date createdAt) {
+        public Builder setCreatedAt(Timestamp createdAt) {
             this.createdAt = createdAt;
             return this;
         }
 
-        public Builder setUpdatedAt(Date updatedAt) {
+        public Builder setUpdatedAt(Timestamp updatedAt) {
             this.updatedAt = updatedAt;
             return this;
         }

@@ -9,34 +9,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("post")
+@RequestMapping("posts")
 public class PostController {
 
     @Autowired
     PostService postService;
 
-    @GetMapping("/posts")
+    @GetMapping
     public List<Post> getAllPosts() {
         return postService.getAllPost();
     }
 
-    @GetMapping("/posts/{postId}")
+    @GetMapping("/{postId}")
     public Post getSinglePost(@PathVariable int postId) {
         return postService.getSinglePost(postId);
     }
 
 
-    @PostMapping("/posts")
+    @PostMapping
     public Post createPost(@RequestBody Post postData) {
         return postService.insertPost(postData);
     }
 
-    @PatchMapping("/posts")
+    @PatchMapping
     public Post updatePost(@RequestBody Post postData) {
         return postService.updatePost(postData);
     }
 
-    @DeleteMapping("/posts/{postId}")
+    @DeleteMapping("/{postId}")
     public Post deletePost(@PathVariable int postId) {
         return postService.deletePost(postId);
     }

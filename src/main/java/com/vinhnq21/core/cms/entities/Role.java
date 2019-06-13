@@ -1,6 +1,7 @@
 package com.vinhnq21.core.cms.entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -33,12 +34,12 @@ public class Role {
     private byte isVisible;
 
     @Column(name = "CREATED_AT", unique = true, nullable = false)
-    private Date createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "UPDATED_AT", unique = true, nullable = false)
-    private Date updatedAt;
+    private Timestamp updatedAt;
 
-    public Role(int id, String name, int domainId, byte isActive, byte isVisible, Date createdAt, Date updatedAt) {
+    public Role(int id, String name, int domainId, byte isActive, byte isVisible, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
         this.domainId = domainId;
@@ -92,19 +93,19 @@ public class Role {
         this.isVisible = isVisible;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -115,8 +116,8 @@ public class Role {
         private int domainId;
         private byte isActive;
         private byte isVisible;
-        private Date createdAt;
-        private Date updatedAt;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
 
         public Builder setId(int id) {
             this.id = id;
@@ -143,12 +144,12 @@ public class Role {
             return this;
         }
 
-        public Builder setCreatedAt(Date createdAt) {
+        public Builder setCreatedAt(Timestamp createdAt) {
             this.createdAt = createdAt;
             return this;
         }
 
-        public Builder setUpdatedAt(Date updatedAt) {
+        public Builder setUpdatedAt(Timestamp updatedAt) {
             this.updatedAt = updatedAt;
             return this;
         }
