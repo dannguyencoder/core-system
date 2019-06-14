@@ -28,6 +28,7 @@ public class DomainController {
 
 
     @PostMapping
+//    @CrossOrigin(origins = "http://localhost:3000")
     public Domain createDomain(@RequestBody Domain domainData) {
         return domainService.insertDomain(domainData);
     }

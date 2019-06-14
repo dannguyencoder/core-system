@@ -6,17 +6,17 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TBL_ROLE_OBJECT"
-//        , catalog = "cms",
-//        uniqueConstraints = {
-//        @UniqueConstraint(columnNames = ""),
-//        @UniqueConstraint(columnNames = "")
-//}
-)
+@Table(name = "TBL_ROLE_OBJECT")
+@IdClass(RoleObject.RoleObjectPk.class)
 public class RoleObject {
 
-    @EmbeddedId
-    private RoleObjectPk idClass;
+    @Id
+    @Column(name = "ROLE_ID", unique = true, nullable = false)
+    private int roleId;
+
+    @Id
+    @Column(name = "OBJECT_ID", unique = true, nullable = false)
+    private int objectId;
 
     @Column(name = "IS_ACTIVE", unique = true, nullable = false)
     private byte isActive;
@@ -30,26 +30,17 @@ public class RoleObject {
     @Column(name = "UPDATED_AT", unique = true, nullable = false)
     private Timestamp updatedAt;
 
-
-
     public RoleObject() {
 
     }
 
-    public RoleObject(RoleObjectPk idClass, byte isActive, byte isVisible, Timestamp createdAt, Timestamp updatedAt) {
-        this.idClass = idClass;
+    public RoleObject(int roleId, int objectId, byte isActive, byte isVisible, Timestamp createdAt, Timestamp updatedAt) {
+        this.roleId = roleId;
+        this.objectId = objectId;
         this.isActive = isActive;
         this.isVisible = isVisible;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-    }
-
-    public RoleObjectPk getIdClass() {
-        return idClass;
-    }
-
-    public void setIdClass(RoleObjectPk idClass) {
-        this.idClass = idClass;
     }
 
     public byte getIsActive() {
@@ -84,17 +75,34 @@ public class RoleObject {
         this.updatedAt = updatedAt;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public int getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(int objectId) {
+        this.objectId = objectId;
+    }
+
     public static class Builder {
 
 
     }
 
-    @Embeddable
     public static class RoleObjectPk implements Serializable {
 
+        @Id
         @Column(name = "ROLE_ID", unique = true, nullable = false)
         private int roleId;
 
+        @Id
         @Column(name = "OBJECT_ID", unique = true, nullable = false)
         private int objectId;
 

@@ -33,7 +33,7 @@ public class RoleObjectServiceImpl implements RoleObjectService {
     @Override
     public RoleObject insertRoleObject(RoleObject roleObjectData) {
 
-        roleObjectData.setIdClass(new RoleObject.RoleObjectPk(3, 3));
+//        roleObjectData.setIdClass(new RoleObject.RoleObjectPk(3, 3));
 
         roleObjectRepository.save(roleObjectData);
 
