@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.controller;
 
+import com.vinhnq21.core.cms.domain.LanguageDomain;
 import com.vinhnq21.core.cms.entities.Language;
 import com.vinhnq21.core.cms.entities.Language;
 import com.vinhnq21.core.cms.service.LanguageService;
@@ -17,7 +18,7 @@ public class LanguageController {
     LanguageService languageService;
 
     @GetMapping
-    public List<Language> getAllLanguages() {
+    public List<LanguageDomain> getAllLanguages() {
         return languageService.getAllLanguage();
     }
 
