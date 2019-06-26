@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.service;
 
+import com.vinhnq21.core.cms.dto.UserDTO;
 import com.vinhnq21.core.cms.entities.User;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> getAllUser();
+    List<UserDTO> getAllUser();
 
     User getSingleUser(int userId);
 

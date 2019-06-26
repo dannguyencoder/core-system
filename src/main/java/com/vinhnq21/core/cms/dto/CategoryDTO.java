@@ -1,89 +1,64 @@
-package com.vinhnq21.core.cms.entities;
-
-import javax.persistence.*;
+package com.vinhnq21.core.cms.dto;
 
 import java.util.Date;
 
-import static javax.persistence.GenerationType.IDENTITY;
+public class CategoryDTO {
 
-@Entity
-@Table(name = "TBL_CATEGORY"
-//        , catalog = "cms",
-//        uniqueConstraints = {
-//        @UniqueConstraint(columnNames = ""),
-//        @UniqueConstraint(columnNames = "")
-//}
-)
-public class Category {
-
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "PARENT_ID", unique = true, nullable = false, length = 10)
     private int parentId;
 
-    @Column(name = "NAME", unique = true, nullable = false, length = 10)
     private String name;
 
-    @Column(name = "FRIENDLY_URL", unique = true, nullable = false, length = 10)
     private String friendlyUrl;
 
-    @Column(name = "CATEGORY_ORDER", unique = true, nullable = false, length = 10)
     private byte categoryOrder;
 
-    @Column(name = "IS_VISIBLE", unique = true, nullable = false, length = 10)
-    private byte isVisible;
-
-    @Column(name = "IS_ACTIVE", unique = true, nullable = false, length = 10)
-    private byte isActive;
-
-    @Column(name = "META_KEYWORDS", unique = true, nullable = false, length = 10)
     private String metaKeywords;
 
-    @Column(name = "META_DESCRIPTION", unique = true, nullable = false, length = 10)
     private String metaDescription;
 
-    @Column(name = "TEMPLATE", unique = true, nullable = false, length = 10)
     private String template;
 
-    @Column(name = "USER_ID", unique = true, nullable = false, length = 10)
     private int userId;
 
-    @Column(name = "LANGUAGE_ID", unique = true, nullable = false, length = 10)
+    private String userName;
+
     private int languageId;
 
-    @Column(name = "DOMAIN_ID", unique = true, nullable = false, length = 10)
+    private String languageName;
+
     private int domainId;
 
-    @Column(name = "CREATED_AT", unique = true, nullable = false, length = 10)
+    private String domainName;
+
+    private byte isActive;
+
+    private byte isVisible;
+
     private Date createdAt;
 
-    @Column(name = "UPDATED_AT", unique = true, nullable = false, length = 10)
     private Date updatedAt;
 
-    public Category(int id, int parentId, String name, String friendlyUrl, byte categoryOrder, byte isVisible, byte isActive, String metaKeywords, String metaDescription, String template, int userId, int languageId, int domainId, Date createdAt, Date updatedAt) {
+    public CategoryDTO(int id, int parentId, String name, String friendlyUrl, byte categoryOrder, String metaKeywords, String metaDescription, String template, int userId, String userName, int languageId, String languageName, int domainId, String domainName, byte isActive, byte isVisible, Date createdAt, Date updatedAt) {
         this.id = id;
         this.parentId = parentId;
         this.name = name;
         this.friendlyUrl = friendlyUrl;
         this.categoryOrder = categoryOrder;
-        this.isVisible = isVisible;
-        this.isActive = isActive;
         this.metaKeywords = metaKeywords;
         this.metaDescription = metaDescription;
         this.template = template;
         this.userId = userId;
+        this.userName = userName;
         this.languageId = languageId;
+        this.languageName = languageName;
         this.domainId = domainId;
+        this.domainName = domainName;
+        this.isActive = isActive;
+        this.isVisible = isVisible;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-    }
-
-    public Category() {
-
     }
 
     public int getId() {
@@ -174,6 +149,14 @@ public class Category {
         this.userId = userId;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public int getLanguageId() {
         return languageId;
     }
@@ -182,12 +165,28 @@ public class Category {
         this.languageId = languageId;
     }
 
+    public String getLanguageName() {
+        return languageName;
+    }
+
+    public void setLanguageName(String languageName) {
+        this.languageName = languageName;
+    }
+
     public int getDomainId() {
         return domainId;
     }
 
     public void setDomainId(int domainId) {
         this.domainId = domainId;
+    }
+
+    public String getDomainName() {
+        return domainName;
+    }
+
+    public void setDomainName(String domainName) {
+        this.domainName = domainName;
     }
 
     public Date getCreatedAt() {
@@ -205,6 +204,4 @@ public class Category {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-
 }

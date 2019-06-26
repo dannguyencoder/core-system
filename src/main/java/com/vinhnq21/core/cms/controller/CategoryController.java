@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.controller;
 
+import com.vinhnq21.core.cms.dto.CategoryDTO;
 import com.vinhnq21.core.cms.entities.Category;
 import com.vinhnq21.core.cms.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class CategoryController {
     CategoryService categoryService;
 
     @GetMapping
-    public List<Category> getAllCategorys() {
+    public List<CategoryDTO> getAllCategorys() {
         return categoryService.getAllCategory();
     }
 

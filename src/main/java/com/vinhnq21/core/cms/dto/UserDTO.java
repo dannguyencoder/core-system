@@ -1,65 +1,47 @@
-package com.vinhnq21.core.cms.entities;
+package com.vinhnq21.core.cms.dto;
 
-import javax.persistence.*;
-
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
-import static javax.persistence.GenerationType.IDENTITY;
+public class UserDTO {
 
-@Entity
-@Table(name = "TBL_USER"
-//        , catalog = "cms",
-//        uniqueConstraints = {
-//        @UniqueConstraint(columnNames = ""),
-//        @UniqueConstraint(columnNames = "")
-//}
-)
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "USERNAME", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "PASSWORD", unique = true, nullable = false)
     private String password;
 
-    @Column(name = "ROLE_ID", unique = true, nullable = false)
     private int roleId;
 
-    @Column(name = "DOMAIN_ID", unique = true, nullable = false)
+    private String roleName;
+
     private int domainId;
 
-    @Column(name = "EMAIL", unique = true, nullable = false)
+    private String domainName;
+
     private String email;
 
-    @Column(name = "IS_ACTIVE", unique = true, nullable = false)
     private byte isActive;
 
-    @Column(name = "IS_VISIBLE", unique = true, nullable = false)
     private byte isVisible;
 
-    @Column(name = "CREATED_AT", unique = true, nullable = false)
     private Date createdAt;
 
-    @Column(name = "UPDATED_AT", unique = true, nullable = false)
     private Date updatedAt;
 
-    @Column(name = "IS_ADMIN", unique = true, nullable = false)
     private byte isAdmin;
 
-    @Column(name = "TOKEN", unique = true, nullable = false)
     private String token;
 
-    public User(String username, String password, int roleId, int domainId, String email, byte isActive, byte isVisible, Date createdAt, Date updatedAt, byte isAdmin, String token) {
+    public UserDTO(int id, String username, String password, int roleId, String roleName, int domainId, String domainName, String email, byte isActive, byte isVisible,
+                   Date createdAt, Date updatedAt, byte isAdmin, String token) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.roleId = roleId;
+        this.roleName = roleName;
         this.domainId = domainId;
+        this.domainName = domainName;
         this.email = email;
         this.isActive = isActive;
         this.isVisible = isVisible;
@@ -67,10 +49,6 @@ public class User {
         this.updatedAt = updatedAt;
         this.isAdmin = isAdmin;
         this.token = token;
-    }
-
-    public User() {
-
     }
 
     public int getId() {
@@ -105,12 +83,28 @@ public class User {
         this.roleId = roleId;
     }
 
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
     public int getDomainId() {
         return domainId;
     }
 
     public void setDomainId(int domainId) {
         this.domainId = domainId;
+    }
+
+    public String getDomainName() {
+        return domainName;
+    }
+
+    public void setDomainName(String domainName) {
+        this.domainName = domainName;
     }
 
     public String getEmail() {
@@ -137,6 +131,14 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
+    public byte getIsVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(byte isVisible) {
+        this.isVisible = isVisible;
+    }
+
     public byte getIsActive() {
         return isActive;
     }
@@ -159,13 +161,5 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    public byte getIsVisible() {
-        return isVisible;
-    }
-
-    public void setIsVisible(byte isVisible) {
-        this.isVisible = isVisible;
     }
 }

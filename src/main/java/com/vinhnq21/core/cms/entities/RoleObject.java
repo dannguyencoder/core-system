@@ -3,6 +3,7 @@ package com.vinhnq21.core.cms.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -25,16 +26,16 @@ public class RoleObject {
     private byte isVisible;
 
     @Column(name = "CREATED_AT", unique = true, nullable = false)
-    private Timestamp createdAt;
+    private Date createdAt;
 
     @Column(name = "UPDATED_AT", unique = true, nullable = false)
-    private Timestamp updatedAt;
+    private Date updatedAt;
 
     public RoleObject() {
 
     }
 
-    public RoleObject(int roleId, int objectId, byte isActive, byte isVisible, Timestamp createdAt, Timestamp updatedAt) {
+    public RoleObject(int roleId, int objectId, byte isActive, byte isVisible, Date createdAt, Date updatedAt) {
         this.roleId = roleId;
         this.objectId = objectId;
         this.isActive = isActive;
@@ -59,19 +60,19 @@ public class RoleObject {
         this.isVisible = isVisible;
     }
 
-    public Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 

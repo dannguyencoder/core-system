@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.service.impl;
 
+import com.vinhnq21.core.cms.dto.ObjectDTO;
 import com.vinhnq21.core.cms.entities.Object;
 import com.vinhnq21.core.cms.repository.ObjectRepository;
 import com.vinhnq21.core.cms.service.ObjectService;
@@ -16,8 +17,8 @@ public class ObjectServiceImpl implements ObjectService {
     ObjectRepository objectRepository;
 
     @Override
-    public List<Object> getAllObject() {
-        return objectRepository.findAll();
+    public List<ObjectDTO> getAllObject() {
+        return objectRepository.getObjects();
     }
 
     @Override

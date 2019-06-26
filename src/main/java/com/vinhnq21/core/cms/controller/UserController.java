@@ -1,5 +1,7 @@
 package com.vinhnq21.core.cms.controller;
 
+import com.vinhnq21.core.cms.dto.TokenDTO;
+import com.vinhnq21.core.cms.dto.UserDTO;
 import com.vinhnq21.core.cms.entities.User;
 import com.vinhnq21.core.cms.entities.User;
 import com.vinhnq21.core.cms.service.UserService;
@@ -17,7 +19,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userService.getAllUser();
     }
 
@@ -40,5 +42,10 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public User deleteUser(@PathVariable int userId) {
         return userService.deleteUser(userId);
+    }
+
+    @PostMapping("/login")
+    public TokenDTO login() {
+        return new TokenDTO("sample token");
     }
 }

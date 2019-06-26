@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.service.impl;
 
+import com.vinhnq21.core.cms.dto.PostDTO;
 import com.vinhnq21.core.cms.entities.Post;
 import com.vinhnq21.core.cms.repository.PostRepository;
 import com.vinhnq21.core.cms.service.PostService;
@@ -16,8 +17,8 @@ public class PostServiceImpl implements PostService {
     PostRepository postRepository;
 
     @Override
-    public List<Post> getAllPost() {
-        return postRepository.findAll();
+    public List<PostDTO> getAllPost() {
+        return postRepository.getPosts();
     }
 
     @Override

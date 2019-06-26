@@ -1,6 +1,6 @@
 package com.vinhnq21.core.cms.service;
 
-import com.vinhnq21.core.cms.domain.LanguageDomain;
+import com.vinhnq21.core.cms.dto.LanguageDTO;
 import com.vinhnq21.core.cms.entities.Language;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface LanguageService {
 
-    List<LanguageDomain> getAllLanguage();
+    List<LanguageDTO> getAllLanguage();
 
     Language getSingleLanguage(int languageId);
 

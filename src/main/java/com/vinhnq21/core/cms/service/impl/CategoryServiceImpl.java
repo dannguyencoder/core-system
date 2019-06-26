@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.service.impl;
 
+import com.vinhnq21.core.cms.dto.CategoryDTO;
 import com.vinhnq21.core.cms.entities.Category;
 import com.vinhnq21.core.cms.repository.CategoryRepository;
 import com.vinhnq21.core.cms.service.CategoryService;
@@ -16,8 +17,8 @@ public class CategoryServiceImpl implements CategoryService {
     CategoryRepository categoryRepository;
 
     @Override
-    public List<Category> getAllCategory() {
-        return categoryRepository.findAll();
+    public List<CategoryDTO> getAllCategory() {
+        return categoryRepository.getCategories();
     }
 
     @Override

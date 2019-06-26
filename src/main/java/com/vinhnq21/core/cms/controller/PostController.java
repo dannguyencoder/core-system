@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.controller;
 
+import com.vinhnq21.core.cms.dto.PostDTO;
 import com.vinhnq21.core.cms.entities.Post;
 import com.vinhnq21.core.cms.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class PostController {
     PostService postService;
 
     @GetMapping
-    public List<Post> getAllPosts() {
+    public List<PostDTO> getAllPosts() {
         return postService.getAllPost();
     }
 

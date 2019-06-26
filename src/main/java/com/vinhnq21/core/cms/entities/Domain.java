@@ -1,10 +1,9 @@
 package com.vinhnq21.core.cms.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
+
 import java.util.Date;
+import java.sql.Timestamp;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -36,12 +35,12 @@ public class Domain {
     private byte isVisible;
 
     @Column(name = "CREATED_AT", unique = true, nullable = false)
-    private Timestamp createdAt;
+    private Date createdAt;
 
     @Column(name = "UPDATED_AT", unique = true, nullable = false)
-    private Timestamp updatedAt;
+    private Date updatedAt;
 
-    public Domain(int id, String url, String name, byte isActive, byte isVisible, Timestamp createdAt, Timestamp updatedAt) {
+    public Domain(int id, String url, String name, byte isActive, byte isVisible, Date createdAt, Date updatedAt) {
         this.id = id;
         this.url = url;
         this.name = name;
@@ -95,19 +94,19 @@ public class Domain {
         this.isVisible = isVisible;
     }
 
-    public Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -118,8 +117,8 @@ public class Domain {
         private String name;
         private byte isActive;
         private byte isVisible;
-        private Timestamp createdAt;
-        private Timestamp updatedAt;
+        private Date createdAt;
+        private Date updatedAt;
 
         public Builder setId(int id) {
             this.id = id;
@@ -146,12 +145,12 @@ public class Domain {
             return this;
         }
 
-        public Builder setCreatedAt(Timestamp createdAt) {
+        public Builder setCreatedAt(Date createdAt) {
             this.createdAt = createdAt;
             return this;
         }
 
-        public Builder setUpdatedAt(Timestamp updatedAt) {
+        public Builder setUpdatedAt(Date updatedAt) {
             this.updatedAt = updatedAt;
             return this;
         }

@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.controller;
 
+import com.vinhnq21.core.cms.dto.RoleDTO;
 import com.vinhnq21.core.cms.entities.Role;
 import com.vinhnq21.core.cms.entities.Role;
 import com.vinhnq21.core.cms.service.RoleService;
@@ -17,7 +18,7 @@ public class RoleController {
     RoleService roleService;
 
     @GetMapping
-    public List<Role> getAllRoles() {
+    public List<RoleDTO> getAllRoles() {
         return roleService.getAllRole();
     }
 

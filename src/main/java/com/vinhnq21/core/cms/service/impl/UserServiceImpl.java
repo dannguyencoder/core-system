@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.service.impl;
 
+import com.vinhnq21.core.cms.dto.UserDTO;
 import com.vinhnq21.core.cms.entities.User;
 import com.vinhnq21.core.cms.repository.UserRepository;
 import com.vinhnq21.core.cms.service.UserService;
@@ -16,8 +17,8 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public List<User> getAllUser() {
-        return userRepository.findAll();
+    public List<UserDTO> getAllUser() {
+        return userRepository.getUsers();
     }
 
     @Override

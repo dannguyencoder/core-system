@@ -1,13 +1,11 @@
 package com.vinhnq21.core.cms.controller;
 
-import com.vinhnq21.core.cms.domain.LanguageDomain;
-import com.vinhnq21.core.cms.entities.Language;
+import com.vinhnq21.core.cms.dto.LanguageDTO;
 import com.vinhnq21.core.cms.entities.Language;
 import com.vinhnq21.core.cms.service.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,7 +16,7 @@ public class LanguageController {
     LanguageService languageService;
 
     @GetMapping
-    public List<LanguageDomain> getAllLanguages() {
+    public List<LanguageDTO> getAllLanguages() {
         return languageService.getAllLanguage();
     }
 

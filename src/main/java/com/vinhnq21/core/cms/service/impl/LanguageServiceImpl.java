@@ -1,6 +1,6 @@
 package com.vinhnq21.core.cms.service.impl;
 
-import com.vinhnq21.core.cms.domain.LanguageDomain;
+import com.vinhnq21.core.cms.dto.LanguageDTO;
 import com.vinhnq21.core.cms.entities.Language;
 import com.vinhnq21.core.cms.repository.LanguageRepository;
 import com.vinhnq21.core.cms.service.LanguageService;
@@ -17,7 +17,7 @@ public class LanguageServiceImpl implements LanguageService {
     LanguageRepository languageRepository;
 
     @Override
-    public List<LanguageDomain> getAllLanguage() {
+    public List<LanguageDTO> getAllLanguage() {
         return languageRepository.getLanguages();
     }
 

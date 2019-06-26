@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.service;
 
+import com.vinhnq21.core.cms.dto.CategoryDTO;
 import com.vinhnq21.core.cms.entities.Category;
 import com.vinhnq21.core.cms.entities.Category;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface CategoryService {
 
-    List<Category> getAllCategory();
+    List<CategoryDTO> getAllCategory();
 
     Category getSingleCategory(int categoryId);
 

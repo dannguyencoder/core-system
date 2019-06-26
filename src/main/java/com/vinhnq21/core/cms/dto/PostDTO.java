@@ -1,87 +1,67 @@
-package com.vinhnq21.core.cms.entities;
-
-import javax.persistence.*;
+package com.vinhnq21.core.cms.dto;
 
 import java.util.Date;
 
-import static javax.persistence.GenerationType.IDENTITY;
+public class PostDTO {
 
-@Entity
-@Table(name = "TBL_POST"
-//        , catalog = "cms",
-//        uniqueConstraints = {
-//        @UniqueConstraint(columnNames = ""),
-//        @UniqueConstraint(columnNames = "")
-//}
-)
-public class Post {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "TITLE", unique = true, nullable = false)
     private String title;
 
-    @Column(name = "CATEGORY_ID", unique = true, nullable = false)
     private int categoryId;
 
-    @Column(name = "AVATAR_LINK", unique = true, nullable = false)
-    private String avatarLink;
+    private String categoryName;
 
-    @Column(name = "LANGUAGE_ID", unique = true, nullable = false)
-    private int languageId;
-
-    @Column(name = "USER_ID", unique = true, nullable = false)
     private int userId;
 
-    @Column(name = "POST_CONTENT", unique = true, nullable = false)
-    private String postContent;
+    private String userName;
 
-    @Column(name = "IS_ACTIVE", unique = true, nullable = false)
-    private byte isActive;
+    private int languageId;
 
-    @Column(name = "IS_VISIBLE", unique = true, nullable = false)
-    private byte isVisible;
+    private String languageName;
 
-    @Column(name = "META_KEYWORDS", unique = true, nullable = false)
-    private String metaKeywords;
-
-    @Column(name = "META_DESCRIPTION", unique = true, nullable = false)
-    private String metaDescription;
-
-    @Column(name = "DOMAIN_ID", unique = true, nullable = false)
     private int domainId;
 
-    @Column(name = "CONTENT_ID", unique = true, nullable = false)
+    private String domainName;
+
     private int contentId;
 
-    @Column(name = "CREATED_AT", unique = true, nullable = false)
+    private String avatarLink;
+
+    private String postContent;
+
+    private String metaKeywords;
+
+    private String metaDescription;
+
+    private byte isActive;
+
+    private byte isVisible;
+
     private Date createdAt;
 
-    @Column(name = "UPDATED_AT", unique = true, nullable = false)
     private Date updatedAt;
 
-    public Post(String title, int categoryId, String avatarLink, int languageId, int userId, String postContent, byte isActive, byte isVisible, String metaKeywords, String metaDescription, int domainId, int contentId, Date createdAt, Date updatedAt) {
+    public PostDTO(int id, String title, int categoryId, String categoryName, int userId, String userName, int languageId, String languageName, int domainId, String domainName, int contentId, String avatarLink, String postContent, String metaKeywords, String metaDescription, byte isActive, byte isVisible, Date createdAt, Date updatedAt) {
+        this.id = id;
         this.title = title;
         this.categoryId = categoryId;
-        this.avatarLink = avatarLink;
-        this.languageId = languageId;
+        this.categoryName = categoryName;
         this.userId = userId;
+        this.userName = userName;
+        this.languageId = languageId;
+        this.languageName = languageName;
+        this.domainId = domainId;
+        this.domainName = domainName;
+        this.contentId = contentId;
+        this.avatarLink = avatarLink;
         this.postContent = postContent;
-        this.isActive = isActive;
-        this.isVisible = isVisible;
         this.metaKeywords = metaKeywords;
         this.metaDescription = metaDescription;
-        this.domainId = domainId;
-        this.contentId = contentId;
+        this.isActive = isActive;
+        this.isVisible = isVisible;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-    }
-
-    public Post() {
-
     }
 
     public int getId() {
@@ -116,20 +96,12 @@ public class Post {
         this.avatarLink = avatarLink;
     }
 
-    public int getLanguageId() {
-        return languageId;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setLanguageId(int languageId) {
-        this.languageId = languageId;
-    }
-
-    public String getPostContent() {
-        return postContent;
-    }
-
-    public void setPostContent(String postContent) {
-        this.postContent = postContent;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public int getUserId() {
@@ -138,6 +110,38 @@ public class Post {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public int getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(int languageId) {
+        this.languageId = languageId;
+    }
+
+    public String getLanguageName() {
+        return languageName;
+    }
+
+    public void setLanguageName(String languageName) {
+        this.languageName = languageName;
+    }
+
+    public String getPostContent() {
+        return postContent;
+    }
+
+    public void setPostContent(String postContent) {
+        this.postContent = postContent;
     }
 
     public byte getIsActive() {
@@ -178,6 +182,14 @@ public class Post {
 
     public void setDomainId(int domainId) {
         this.domainId = domainId;
+    }
+
+    public String getDomainName() {
+        return domainName;
+    }
+
+    public void setDomainName(String domainName) {
+        this.domainName = domainName;
     }
 
     public int getContentId() {

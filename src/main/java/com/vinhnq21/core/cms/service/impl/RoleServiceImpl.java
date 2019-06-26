@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.service.impl;
 
+import com.vinhnq21.core.cms.dto.RoleDTO;
 import com.vinhnq21.core.cms.entities.Role;
 import com.vinhnq21.core.cms.repository.RoleRepository;
 import com.vinhnq21.core.cms.service.RoleService;
@@ -16,8 +17,8 @@ public class RoleServiceImpl implements RoleService {
     RoleRepository roleRepository;
 
     @Override
-    public List<Role> getAllRole() {
-        return roleRepository.findAll();
+    public List<RoleDTO> getAllRole() {
+        return roleRepository.getRoles();
     }
 
     @Override

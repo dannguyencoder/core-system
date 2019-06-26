@@ -1,55 +1,37 @@
-package com.vinhnq21.core.cms.entities;
+package com.vinhnq21.core.cms.dto;
 
-import javax.persistence.*;
-
+import javax.persistence.Column;
 import java.util.Date;
 import java.sql.Timestamp;
 
-import static javax.persistence.GenerationType.IDENTITY;
+public class TokenDTO {
 
-@Entity
-@Table(name = "TBL_TOKEN"
-//        , catalog = "cms",
-//        uniqueConstraints = {
-//        @UniqueConstraint(columnNames = ""),
-//        @UniqueConstraint(columnNames = "")
-//}
-)
-public class Token {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "TOKEN", unique = true, nullable = false)
     private String token;
 
-    @Column(name = "EXPIRE_DATE", unique = true, nullable = false)
     private Date expireDate;
 
-    @Column(name = "IS_ACTIVE", unique = true, nullable = false)
     private byte isActive;
 
-    @Column(name = "IS_VISIBLE", unique = true, nullable = false)
     private byte isVisible;
 
-    @Column(name = "CREATED_AT", unique = true, nullable = false)
     private Date createdAt;
 
-    @Column(name = "UPDATED_AT", unique = true, nullable = false)
     private Date updatedAt;
 
-    public Token(int id, String token, Date expireDate, Date createdAt, Date updatedAt) {
+    public TokenDTO(String token) {
+        this.token = token;
+    }
+
+    public TokenDTO(int id, String token, Date expireDate, byte isActive, byte isVisible, Date createdAt, Date updatedAt) {
         this.id = id;
         this.token = token;
         this.expireDate = expireDate;
+        this.isActive = isActive;
+        this.isVisible = isVisible;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-    }
-
-    public Token() {
-
     }
 
     public int getId() {
@@ -76,6 +58,22 @@ public class Token {
         this.expireDate = expireDate;
     }
 
+    public byte getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(byte isActive) {
+        this.isActive = isActive;
+    }
+
+    public byte getIsVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(byte isVisible) {
+        this.isVisible = isVisible;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -91,6 +89,4 @@ public class Token {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-
 }

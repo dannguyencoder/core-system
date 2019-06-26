@@ -1,5 +1,6 @@
 package com.vinhnq21.core.cms.controller;
 
+import com.vinhnq21.core.cms.dto.ObjectDTO;
 import com.vinhnq21.core.cms.entities.Object;
 import com.vinhnq21.core.cms.entities.Object;
 import com.vinhnq21.core.cms.service.ObjectService;
@@ -17,7 +18,7 @@ public class ObjectController {
     ObjectService objectService;
 
     @GetMapping
-    public List<Object> getAllObjects() {
+    public List<ObjectDTO> getAllObjects() {
         return objectService.getAllObject();
     }
 
